@@ -26,7 +26,7 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-96 bg-white p-6 rounded-lg shadow-md transition duration-300">
+      <div className="w-96 bg-white p-6 rounded-lg shadow-md transition duration-300 space-y-4">
         <h2 className="text-3xl font-bold mb-4 text-center text-purple-500">Sign Up</h2>
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
@@ -60,7 +60,8 @@ const Signup = () => {
           >
             {isLoading ? "Signing up..." : "Sign Up"}
           </button>
-          <button
+        </form>
+        <button
             onClick={handleGoogleSignup}
             className="flex items-center justify-center gap-2 bg-white text-black py-2 rounded-md w-full shadow-md hover:bg-gray-100 transition duration-200"
           >
@@ -71,7 +72,6 @@ const Signup = () => {
             Already have an account? 
             <a href="/login" className="text-purple-500 hover:underline"> Login!</a>
           </p>
-        </form>
       </div>
     </div>
   );
