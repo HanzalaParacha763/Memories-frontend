@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [formDataSignup, setFormDataSignup] = useState({ username: "", email: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, error } = useSelector((state) => state.auth);
@@ -15,13 +15,13 @@ const Signup = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormDataSignup({ ...formDataSignup, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = await dispatch(signupUser(formData));
-    if (result.payload?.user) navigate("/dashboard");
+    const result = await dispatch(signupUser(formDataSignup));
+    if (result.payload?.user) navigate("/");
   };
 
   return (
@@ -34,7 +34,7 @@ const Signup = () => {
             type="text"
             name="username"
             placeholder="Username"
-            value={formData.username}
+            value={formDataSignup.username}
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded-md focus:outline-none"
           />
@@ -42,7 +42,7 @@ const Signup = () => {
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
+            value={formDataSignup.email}
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded-md focus:outline-none"
           />
@@ -50,7 +50,7 @@ const Signup = () => {
             type="password"
             name="password"
             placeholder="Password"
-            value={formData.password}
+            value={formDataSignup.password}
             onChange={handleChange}
             className="p-2 border border-gray-300 rounded-md focus:outline-none"
           />
